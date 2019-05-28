@@ -50,20 +50,30 @@
 	<!-- No duplicate class names allowed -->
 	<rule ref="Generic.Classes.DuplicateClassName"/>
 
-	<!-- Warn about TODO and FIXME in comments -->
-	<rule ref="Generic.Commenting.Fixme"/>
+	<!-- Warn about TODO in comments -->
 	<rule ref="Generic.Commenting.Todo"/>
 
 	<!-- No inline control structures -->
 	<rule ref="Generic.ControlStructures.InlineControlStructure"/>
 
+	<!-- Check signature of control structures (e.g. spacing) -->
+	<rule ref="PEAR.ControlStructures.ControlSignature"/>
+
+	<!-- FIXME -->
+	<!-- <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/> -->
+
 	<!-- No useless concat of strings -->
-	<rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+	<rule ref="Generic.Strings.UnnecessaryStringConcat">
+		<properties>
+			<property name="allowMultiline" type="boolean" value="true" />
+		</properties>
+	</rule>
 
 	<!-- No deprecated functions -->
 	<rule ref="Generic.PHP.DeprecatedFunctions"/>
 
-	<!-- Lowercase constants, types and keywords -->
+	<!-- Lowercase constants, php functions, types and keywords -->
+	<rule ref="Squiz.PHP.LowercasePHPFunctions"/>
 	<rule ref="Generic.PHP.LowerCaseConstant"/>
 	<rule ref="Generic.PHP.LowerCaseType"/>
 	<rule ref="Generic.PHP.LowerCaseKeyword"/>
@@ -83,13 +93,17 @@
 	<!-- Method and variable in classes naming convention -->
 	<rule ref="PSR1.Methods.CamelCapsMethodName"/>
 	<rule ref="PSR2.Methods.MethodDeclaration"/>
-	<rule ref="Squiz.NamingConventions.ValidVariableName"/>
+	<!-- <rule ref="Squiz.NamingConventions.ValidVariableName"/> -->
 
 	<!-- Disallow else if -->
 	<rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
 
 	<!-- Format switch statements correctly -->
-	<rule ref="PSR2.ControlStructures.SwitchDeclaration"/>
+	<rule ref="PSR2.ControlStructures.SwitchDeclaration">
+		<properties>
+			<property name="indent" type="integer" value="1" />
+		</properties>
+	</rule>
 
 	<!-- No empty space between function body and closing brace -->
 	<rule ref="PSR2.Methods.FunctionClosingBrace"/>
@@ -102,6 +116,27 @@
 
 	<!-- Disallow unneccesary whitespace -->
 	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+
+	<!-- Disallow empty line after opening brace of function -->
+	<rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace"/>
+
+	<!-- Disallow arbitary spacing around logical operators -->
+	<rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+
+	<!-- Disallow arbitary spacing around other operators -->
+	<rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
+
+	<!-- Disallow arbitary spacing around object operators -->
+	<rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing"/>
+
+	<!-- Checks the separation between functions and methods -->
+	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
+		<properties>
+			<property name="spacing" type="integer" value="1" />
+			<property name="spacingBeforeFirst" type="integer" value="0" />
+			<property name="spacingAfterLast" type="integer" value="0" />
+		</properties>
+	</rule>
 
 	<!-- No unused variables - https://github.com/sirbrillig/phpcs-variable-analysis/ needs to be installed -->
 	<rule ref="VariableAnalysis.CodeAnalysis.VariableAnalysis"/>
@@ -136,6 +171,9 @@
 	<!-- Force space after cast -->
 	<rule ref="Generic.Formatting.SpaceAfterCast"/>
 
+	<!-- Force no space in cast -->
+	<rule ref="Squiz.WhiteSpace.CastSpacing"/>
+
 	<!-- Enforce spacing in function calls -->
 	<rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
 
@@ -150,8 +188,28 @@
 	</rule>
 
 	<!-- Disallow arbitary parantheses spacing -->
-	<rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
+	<rule ref="Squiz.WhiteSpace.LanguageConstructSpacing"/>
+
+	<!-- Makes sure that any strings that are "echoed" are not enclosed in brackets -->
+	<rule ref="Squiz.Strings.EchoedStrings"/>
+
+	<!-- Enforce whitespace for concatenation of strings -->
+	<rule ref="Squiz.Strings.ConcatenationSpacing">
+		<properties>
+			<property name="spacing" type="integer" value="1" />
+			<property name="ignoreNewlines" type="boolean" value="true" />
+		</properties>
+	</rule>
 
 	<!-- Disallow silencing errors -->
 	<rule ref="Generic.PHP.NoSilencedErrors"/>
+
+	<!-- Warn about commented out code -->
+	<rule ref="Squiz.PHP.CommentedOutCode"/>
+
+	<!-- Disallow eval -->
+	<rule ref="Squiz.PHP.Eval"/>
+
+	<!-- FIXME -->
+	<rule ref="Squiz.Classes.ValidClassName"/>
 </ruleset>
